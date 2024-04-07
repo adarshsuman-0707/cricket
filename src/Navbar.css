@@ -1,0 +1,13 @@
+
+#target{
+    background-color: rgb(113, 106, 106);
+    width:100%;
+ display: flex;
+ justify-content: space-around;  
+ font-size: 23px;
+ font-weight: bold; 
+}
+ .navlink{
+    text-decoration: none;
+    text-transform: capitalize;
+}
