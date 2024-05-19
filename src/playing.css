@@ -1,0 +1,433 @@
+*{
+  user-select: none;
+}
+#demotxt {
+  color: #202c2d;
+  text-shadow: 0 1px #808d93, -1px 0 #cdd2d5, -1px 2px #808d93, -2px 1px #cdd2d5, -2px 3px #808d93, -3px 2px #cdd2d5, -3px 4px #808d93, -4px 3px #cdd2d5, -4px 5px #808d93, -5px 4px #cdd2d5, -5px 6px #808d93, -6px 5px #cdd2d5, -6px 7px #808d93, -7px 6px #cdd2d5, -7px 8px #808d93, -8px 7px #cdd2d5;
+  color: #202c2d;
+
+}
+
+.head2 {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: row;
+
+
+}
+
+
+.ptag {
+  color: black;
+  font-size: 20px;
+
+}
+
+.two_parts {
+  margin-top: 23px;
+  display: flex;
+  justify-content: space-around;
+  flex-flow: row;
+  width: 100%;
+  height: fit-content;
+  flex-wrap: nowrap;
+  padding: 30px;
+
+
+}
+
+.part1 {
+  width: 100%;
+  height: 500px;
+  background-image: url("cricketing.jpg");
+  flex-basis: 400px;
+  padding: 3px;
+  background-size: cover;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+
+}
+
+.board {
+  margin-top: 300px;
+  ;
+  padding: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 200px;
+
+
+}
+
+th {
+  padding: 2px;
+  ;
+  font-size: 22px;
+  font-family: cursive;
+  color: white;
+  text-shadow: 0 0 10px red, 0 2px 5px blue, -2px 3px 10px white;
+}
+
+.insideptag {
+  text-shadow: 0 0 10px red, 0 2px 5px blue, -2px 3px 10px white;
+
+}
+
+.outside {
+  text-shadow: 0 0 10px red, 0 2px 5px blue, -2px 3px 10px rgb(255, 255, 255), 3px 5px 3px yellow;
+
+}
+
+.btn-class-name {
+  --primary: 255, 90, 120;
+
+  --secondary: 150, 50, 60;
+  width: 60px;
+  height: 50px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  user-select: none;
+  touch-action: manipulation;
+  outline: 10px solid rgb(var(--primary), .5);
+  border-radius: 100%;
+  position: relative;
+  transition: .3s;
+}
+
+.btn-class-name .back {
+  background: rgb(var(--secondary));
+  border-radius: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+
+}
+
+.cardinner {
+  background-color: rgba(245, 245, 245, 0.719);
+  border-radius: 30px;
+}
+
+.btn-class-name .front {
+
+  background: linear-gradient(0deg, rgba(var(--primary), .6) 20%, rgba(var(--primary)) 50%);
+  box-shadow: 0 .5em 1em -0.2em rgba(var(--secondary), .5);
+  border-radius: 100%;
+  position: absolute;
+  border: 1px solid rgb(var(--secondary));
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.8rem;
+  font-weight: 600;
+  font-family: inherit;
+  transform: translateY(-15%);
+  transition: .15s;
+  color: rgb(var(--secondary));
+}
+
+.btn-class-name:active .front {
+  transform: translateY(0%);
+  box-shadow: 0 0;
+}
+
+.shows {
+
+  padding: 50px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.Maincard {
+  /* display: flex;
+justify-content: center; */
+/* align-items: center; */
+  padding: 10px;
+  padding-top: 30px;
+  width: 100wh;
+  height: 100vh;
+  /* height: 760px;    */
+  /* Add your background pattern here */
+  /* background-color: lightblue; */
+  background-image: radial-gradient(black 55%, #0000),
+    /* radial-gradient(black 55%, #0000), */
+    linear-gradient(135deg,
+      red,
+      orange,
+      yellow,
+      lime,
+      cyan,
+      blue,
+      indigo,
+      deeppink);
+  background-size: 100% 0.5%, contain;
+
+
+}
+
+.buttonHandle {
+
+
+  margin-top: 98px;
+  display: flex;
+  justify-content: space-around;
+  -ms-flex-align: baseline;
+  width: 100%;
+  /* background-color: black; */
+  height: 100px;
+  padding-top: 30px;
+  border-bottom-right-radius: 30px;
+}
+
+.part2 {
+  padding-top: 20px;
+  width: 100%;
+  height: 500px;
+  /* background: url("https://i.gifer.com/OwRt.gif"); */
+  background-image: radial-gradient(rgb(209, 132, 0),35%,#000,#556105),linear-gradient(135deg,red,orange,yellow,deeppink,green,yellowgreen);
+  background-size: 100% 0.4% ,contain;
+  flex-shrink: 100px;
+  ;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+
+
+}
+
+
+.Btn {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 45px;
+  height: 45px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition-duration: .3s;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+  background-color: rgb(255, 65, 65);
+}
+
+/* plus sign */
+.sign {
+  width: 100%;
+  transition-duration: .3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sign svg {
+  width: 17px;
+}
+
+.sign svg path {
+  fill: white;
+}
+
+/* text */
+.texting {
+  position: absolute;
+  right: 0%;
+  width: 0%;
+  opacity: 0;
+  color: white;
+  font-size: 1.2em;
+  font-weight: 600;
+  transition-duration: .3s;
+}
+
+/* hover effect on button width */
+.Btn:hover {
+  width: 125px;
+  border-radius: 40px;
+  transition-duration: .3s;
+}
+
+.Btn:hover .sign {
+  width: 30%;
+  transition-duration: .3s;
+  padding-left: 20px;
+}
+
+/* hover effect button's text */
+.Btn:hover .texting {
+  opacity: 1;
+  width: 70%;
+  transition-duration: .3s;
+  padding-right: 10px;
+}
+
+/* button click effect*/
+.Btn:active {
+  transform: translate(2px, 2px);
+}
+@media screen and (max-width:590px){
+  
+  .buttonHandle{
+    background-color: whitesmoke;
+  }
+.insideptag{
+    font-size: 12px;;
+  }
+  .outside{
+    font-size: 12px;;
+  }
+}
+
+@media only screen and (max-width: 768px) and (min-width:600px) {
+  .part1 {
+    width: 30%;
+    height: 300px;
+    background-image: url("cricketin.jpg");
+    flex-basis: 150px;
+    padding: 2px;
+    background-size: cover;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+  
+  }
+
+  #heading{
+    font-size:12px;
+  }
+  .outside{
+    font-size: 19px;;
+  }
+  .part2 {
+    width: 70%;
+    height: 300px;
+    flex-grow:1;
+  }
+
+  .Maincard {
+background-size: cover;
+display: flex;
+justify-content: center;
+align-items: center;
+
+  }
+  .shows {
+
+    padding: 50px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap:wrap;
+    justify-content: space-around;
+    margin-top:-30px;
+    GAP:0PX;
+    height: 100PX;
+  }
+  .insideptag{
+    font-size: 15px;;
+  }
+  TABLE{
+    margin-top:-110px;
+  }
+  th{
+    font-size: 10px;;
+    font-weight: bold;
+  }
+  
+  .ptag {
+    font-size: 10px;
+    
+  }
+  .btn-class-name{
+    width:50px;
+    height:30px;
+  }
+  
+.buttonHandle {
+  background-color: transparent;
+  display: flex;
+  flex-wrap: wrap ;
+}
+}
+
+
+
+
+@media only screen and (max-width: 990px) {
+  .part1 {
+    width: 30%;
+    height: 300px;
+    background-image: url("cricketin.jpg");
+    flex-basis: 150px;
+    padding: 2px;
+    background-size: cover;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+  
+  }
+
+  #heading{
+    font-size:12px;
+  }
+  .outside{
+    font-size: 19px;;
+  }
+  .part2 {
+    width: 70%;
+    height: 300px;
+    flex-grow:1;
+  }
+
+  .Maincard {
+background-size: cover;
+display: flex;
+justify-content: center;
+align-items: center;
+
+  }
+  .shows {
+
+    padding: 50px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap:wrap;
+    justify-content: space-around;
+    margin-top:-30px;
+    GAP:0PX;
+    height: 100PX;
+  }
+  .insideptag{
+    font-size: 15px;;
+  }
+  TABLE{
+    margin-top:-110px;
+  }
+  th{
+    font-size: 10px;;
+    font-weight: bold;
+  }
+  
+  .ptag {
+    font-size: 10px;
+    
+  }
+  .btn-class-name{
+    width:50px;
+    height:30px;
+  }
+  
+.buttonHandle {
+  background-color: transparent;
+  display: flex;
+  flex-wrap: wrap ;
+}
+}

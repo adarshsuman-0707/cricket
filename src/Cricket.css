@@ -1,0 +1,183 @@
+#fixNav{
+    margin-top: 20px;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.input {
+    border: 2px solid transparent;
+    width: 15em;
+    height: 2.5em;
+    padding-left: 0.8em;
+    outline: none;
+    overflow: hidden;
+    background-color: #F3F3F3;
+    border-radius: 10px;
+    transition: all 0.5s;
+  }
+  
+  .input:hover,
+  .input:focus {
+    border: 2px solid #4A9DEC;
+    box-shadow: 0px 0px 0px 7px rgb(74, 157, 236, 20%);
+    background-color: white;
+  }
+  #forms {
+    margin-top:30px;
+    /* background-color: rgba(0, 0, 0, 0.744); */
+    flex-direction: column;
+    justify-content: center;
+    width:50%;
+    align-items: center;
+    gap:2px;
+    height:540px;
+    border-radius: 10px;
+        background: linear-gradient(302deg,#dc268774,#a2f14d40,#777e3578,#e190734a,#1b616286);
+        background-size: 300% 300%;
+        animation: gradient-animation 5s ease infinite;
+      
+      
+   
+
+  }
+     @keyframes gradient-animation {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+  #heading{
+    font-size: 42px;
+    font-family: cursive;
+    color:white;
+    text-shadow: 0 0 10px blue,0 2px 4px white;
+  }
+  p{
+    font-size: 29px;
+    color:white;
+    
+    font-family:'Times New Roman', Times, serif;
+  }
+  .buttons {
+
+    width: 9em;
+    height: 3em;
+    border-radius: 30em;
+    font-size: 15px;
+    font-family: inherit;
+    border: none;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    box-shadow: 6px 6px 12px #c5c5c5,
+                -6px -6px 12px #ffffff;
+   }
+   #bottombuton{
+    display: flex;
+    width:100%;
+    justify-content: center;
+    margin-top:50px;
+    align-items: center;
+   }
+   .buttons::before {
+    content: '';
+    width: 0;
+    height: 3em;
+    border-radius: 30em;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: linear-gradient(to right, #0fd850 0%, #f9f047 100%);
+    transition: .5s ease;
+    display: block;
+    z-index: -1;
+   }
+   
+   .buttons:hover::before {
+    width: 9em;
+   }
+   #card{
+    background-color: rgba(245, 245, 245, 0.482);
+   }
+   #gradient{
+
+    width: 100wh;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+
+    /* Add your background pattern here */
+    /* background-color: lightblue; */
+    background-image: radial-gradient(black 55%, #0000),
+      /* radial-gradient(black 55%, #0000), */
+        linear-gradient(
+          135deg,
+          red,
+          orange,
+          yellow,
+          lime,
+          cyan,
+          blue,
+          indigo,
+          deeppink
+        );
+    background-size: 100% 0.5%, contain;
+  
+   }
+   #mains{
+   margin-top:15px;
+
+   }
+
+   
+   .sbutton {
+    align-items: center;
+    background-image: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);
+    border: 0;
+    border-radius: 8px;
+    box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    display: flex;
+    font-family: Phantomsans, sans-serif;
+    font-size: 18px;
+    justify-content: center;
+    line-height: 1em;
+    max-width: 100%;
+    min-width: 140px;
+    padding: 3px;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: all .3s;
+   }
+   
+   .sbutton:active,
+  .sbutton:hover {
+    outline: 0;
+   }
+   
+   .sbutton span {
+    background-color: rgb(5, 6, 45);
+    padding: 16px 24px;
+    border-radius: 6px;
+    width: 100%;
+    height: 100%;
+    transition: 300ms;
+   }
+   
+   .sbutton:hover span {
+    background: none;
+   }
+   
+   .sbutton:active {
+    transform: scale(0.9);
+   }

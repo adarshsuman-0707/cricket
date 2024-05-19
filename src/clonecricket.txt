@@ -1,0 +1,331 @@
+import React, { useLayoutEffect } from 'react'
+import { useState, useReducer } from 'react'
+import './playing.css'
+import 'bootstrap/dist/css/bootstrap.min.css'
+const Playing = () => {
+    let [score, setScore] = useState(0);
+    let [over, setOver] = useState(0);
+    let [run, setRun] = useState(0);
+    let [wicket, setWicket] = useState(0)
+    let [ball, setBall] = useState(0)
+
+
+    let reduce = (state, action) => {
+
+        if (action.type === "OVER") {
+            if (ball === 6) {
+                setOver(over + 1)
+                setScore(0)
+                setBall(0)
+            }
+        }
+
+        else if (action.type === "wickets") {
+            if (ball < 6) {
+                setWicket(wicket + 1)
+                setBall(ball + 1)
+            }
+        }
+        else if (action.type === "one") {
+            if (ball < 6) {
+                setScore(score + 1)
+                setRun(run + 1)
+                setBall(ball + 1)
+            }
+        }
+        else if (action.type === "two") {
+            if (ball < 6) {
+                setScore(score + 2)
+                setRun(run + 2)
+                setBall(ball + 1)
+            }
+        }
+        else if (action.type === "three") {
+            if (ball < 6) {
+                setScore(score + 3)
+                setRun(run + 3)
+                setBall(ball + 1)
+            }
+        }
+        else if (action.type === "four") {
+            if (ball < 6) {
+                setScore(score + 4)
+                setRun(run + 4)
+                setBall(ball + 1)
+            }
+
+        } else if (action.type === "six") {
+            if (ball < 6) {
+                setScore(score + 6)
+                setRun(run + 6)
+                setBall(ball + 1)
+            }
+        }
+        else if (action.type === "wide") {
+            if (ball < 6) {
+                setScore(score + 1)
+                setRun(run + 1)
+                setBall(ball)
+            }
+        }
+    }
+    let [, dispatch] = useReducer(reduce, 0)
+    let [name, setName] = useState("");
+    function one(){
+        if (ball < 6) {
+            setScore(score + 1)
+            setRun(run + 1)
+            setBall(ball + 1)
+        }
+    
+    }function two(){
+        if (ball < 6) {
+            setScore(score + 2)
+            setRun(run + 2)
+            setBall(ball + 1)
+        }
+    
+    }function three(){
+        if (ball < 6) {
+            setScore(score + 3)
+            setRun(run + 3)
+            setBall(ball + 1)
+        }
+    
+    }function four(){
+        if (ball < 6) {
+            setScore(score + 4)
+            setRun(run + 4)
+            setBall(ball + 1)
+        }
+    
+    }function six(){
+        if (ball < 6) {
+            setScore(score + 6)
+            setRun(run + 6)
+            setBall(ball + 1)
+        }
+    
+    }function wide(){
+        if (ball < 6) {
+            setScore(score + 1)
+            setRun(run + 1)
+            setBall(ball)
+        }
+    
+    }function wickets(){
+
+        if (ball < 6) {
+            setWicket(wicket + 1)
+            setBall(ball + 1)
+        }
+    }
+
+
+function overs(){
+    if (ball === 6) {
+        setOver(over + 1)
+        setScore(0)
+        setBall(0)
+    }
+}
+
+    useLayoutEffect(() => {
+        let a = localStorage.getItem("data ");
+        let newdata = JSON.parse(a)
+        setName(newdata)
+
+    }, [])
+    return (
+        <div className='Maincard'>
+
+            <div className="container cardinner">
+                <div> <h1 align="center " id="demotxt">Welcome On Score Board</h1></div>
+                <div className=''> </div>
+                <div className='two_parts'>
+                    <div className='part1'>
+                        <span className='board'>
+                            <table border="0">
+
+                                <tr> <th>Team Name </th> <th> {name.Firstname}</th></tr>
+                                <tr> <th>Total Player </th> <th>{name.player}</th></tr><tr>
+                                    <th>Total Over </th> <th> {name.over}</th></tr>
+                            </table>
+                        </span>
+                    </div>
+                    <div className='part2'>
+                        <h1 id="heading" align="center">Live Scoring</h1>
+                        <div className='shows text-center'>
+                            <p className='outside'>
+                            Score <p class="insideptag"> {score}</p>
+
+                            </p>
+                            <p className='outside'>
+                             Ball <p class="insideptag"> {ball}</p>
+
+                            </p><p className='outside'>
+                            Wicket <p class="insideptag"> {wicket}</p>
+
+                            </p><p className='outside'>
+                            Total Run <p class="insideptag"> {run}</p>
+
+                            </p><p className='outside'>
+                            Total over <p class="insideptag"> {run}</p>
+
+                            </p>
+                        </div>
+                        <div className="buttonHandle">
+                            <button className="btn-class-name" onClick={() => one()}>
+                                <span className="back"></span>
+                                <span className="front">1</span>
+                            </button>
+
+                            <button className="btn-class-name" onClick={() =>two()}>
+                                <span className="back"></span>
+                                <span className="front">2</span>
+                            </button>
+                            <button className="btn-class-name" onClick={() => three()}>
+                                <span className="back"></span>
+                                <span className="front">3</span>
+                            </button>
+                            <button className="btn-class-name" onClick={() => four()}>
+                                <span className="back"></span>
+                                <span className="front">4</span>
+                            </button>
+                            <button className="btn-class-name" onClick={() => six()}>
+                                <span className="back"></span>
+                                <span className="front">6</span>
+                            </button>
+                            <button className="btn-class-name" onClick={() => wickets()}>
+                                <span className="back"></span>
+                                <span className="front">out</span>
+
+                            </button>
+                            <button className="btn-class-name" onClick={() =>wide()}>
+                                <span className="back"></span>
+                                <span className="front">wide</span>
+                            </button>
+                            <button className="btn-class-name" onClick={() => overs()}>
+                                <span className="back"></span>
+                                <span className="front">over</span>
+                            </button>
+                            
+                            
+                            
+                            
+                            {/* <button onClick={() => dispatch(({ type: "one" }))}>1</button>
+                            <button onClick={() => dispatch(({ type: "two" }))}>2</button>
+                            <button onClick={() => dispatch(({ type: "three" }))}>3</button>
+                            <button onClick={() => dispatch(({ type: "wide" }))}>+1 with wide</button>
+                            <button onClick={() => dispatch(({ type: "six" }))}>6</button>
+                            <button onClick={() => dispatch(({ type: "four" }))}>4</button>
+                            <button onClick={() => dispatch(({ type: "wickets" }))}> wicket</button>
+                            <button onClick={() => dispatch(({ type: "OVER" }))}> over</button> 
+                             </div> */}
+
+</div>
+                    </div>
+
+
+
+
+
+                </div>
+
+
+
+            </div>
+
+
+            {/* <h1>over : {over}</h1>
+            <h2>{run} :run</h2>
+            <h3>{wicket}:wicket</h3>
+            <h1>Total ball : {ball} </h1>
+            <button onClick={() => dispatch(({type:"one"}))}>1</button>
+            <button onClick={() =>dispatch(({type:"two"}))}>2</button>
+            <button onClick={() =>dispatch(({type:"three"}))}>3</button>
+            <button onClick={() => dispatch(({type:"wide"}))}>+1 with wide</button>
+            <button onClick={() =>dispatch(({type:"six"}))}>6</button>
+            <button onClick={() => dispatch(({type:"four"}))}>4</button>
+            <button onClick={() => dispatch(({ type: "wickets" }))}> wicket</button>
+            <button onClick={() => dispatch(({ type: "OVER" }))}> over</button> */}
+        </div>
+    )
+}
+
+export default Playing
+
+
+
+
+4
+    function one(){
+        if (ball < 6) {
+            setScore(score + 1)
+            setRun(run + 1)
+            setBall(ball + 1)
+        }
+    
+    }function two(){
+        if (ball < 6) {
+            setScore(score + 2)
+            setRun(run + 2)
+            setBall(ball + 1)
+        }
+    
+    }function three(){
+        if (ball < 6) {
+            setScore(score + 3)
+            setRun(run + 3)
+            setBall(ball + 1)
+        }
+    
+    }function four(){
+        if (ball < 6) {
+            setScore(score + 4)
+            setRun(run + 4)
+            setBall(ball + 1)
+        }
+    
+    }function six(){
+        if (ball < 6) {
+            setScore(score + 6)
+            setRun(run + 6)
+            setBall(ball + 1)
+        }
+    
+    }function wide(){
+        if (ball < 6) {
+            setScore(score + 1)
+            setRun(run + 1)
+            setBall(ball)
+        }
+    
+    }function wickets(){
+
+        if (ball < 6) {
+            setWicket(wicket + 1)
+            setBall(ball + 1)
+        }
+    }
+
+
+function overs(){
+    if (ball === 6) {
+        setOver(over + 1)
+        setScore(0)
+        setBall(0)
+    }
+}
+
+
+
+    {/* <button onClick={() => dispatch(({ type: "one" }))}>1</button>
+                            <button onClick={() => dispatch(({ type: "two" }))}>2</button>
+                            <button onClick={() => dispatch(({ type: "three" }))}>3</button>
+                            <button onClick={() => dispatch(({ type: "wide" }))}>+1 with wide</button>
+                            <button onClick={() => dispatch(({ type: "six" }))}>6</button>
+                            <button onClick={() => dispatch(({ type: "four" }))}>4</button>
+                            <button onClick={() => dispatch(({ type: "wickets" }))}> wicket</button>
+                            <button onClick={() => dispatch(({ type: "OVER" }))}> over</button> 
+                             </div> */}

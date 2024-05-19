@@ -1,6 +1,6 @@
-import React,{useEffect, useState} from 'react'
+import {React,useState,useEffect} from 'react'
 
-import './Manage.css'
+// import './Manage.css'
      
 const Form = () => {
 let [input,setInput]=useState({
@@ -15,12 +15,32 @@ function fun1(e){
     setInput({...input,[name]:value})
 }
 const done=(e)=>{
+    e.preventDefault()
     // let data=localStorage.setItem(input,e.value);
-let Format = {firstname : input.firstname,lastname:input.lastname , email : input.email , password : input.password}
-const information = JSON.stringify(Format)
-localStorage.setItem("FORM ", information)
-e.preventDefault()
-    console.log(input);
+// let Format = {firstname : input.firstname,lastname:input.lastname , email : input.email , password : input.password}
+const information = JSON.stringify(input)
+localStorage.setItem("data ", information)
+setData(input)
+    // console.log(input);
+
+}
+const [data,setData]=useState(null);
+
+
+
+console.log(localStorage.getItem("data "))
+useEffect(()=>{
+let a =localStorage.getItem("data ")
+  let newdata=JSON.parse(a);
+  console.log(newdata);
+  setData(newdata)
+   
+},[])
+  
+const remove=()=>{
+    // setData('  ')
+    localStorage.clear('data ')
+    setData(null)
 }
     return (<>
 
@@ -36,12 +56,24 @@ e.preventDefault()
                 <input type='password'onInput = {fun1} name="password" value={input.password}  required placeholder='Enter password ' />
                 <br/>
                 <button > add </button>
-                {/* <input type='text '/> */}
+            
+
 
             </form>
+            <br/>
+            <br/>
+      
+{/* // nhi mila kuch bhi show nhi hoga  */}
 
+             <div>{
+             
+             data?(<><h1>{data.firstname}</h1>
+             <h1>{data.lastname}</h1>
+             <h1>{data.email}</h1>
+             <h1>{data.password}</h1></>):(<><h2>nhi mila kuch bhi</h2></>)
+             }</div>
 
-
+{data ? (<button onClick={remove}>Remove</button>) : " "}
         </div>
 
      </> )
