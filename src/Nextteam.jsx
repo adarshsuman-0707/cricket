@@ -1,26 +1,31 @@
+// import Playing from './Playing'
 import React, { useEffect, useLayoutEffect } from 'react'
 import { useState, useReducer } from 'react'
-import {Link} from 'react-router-dom'
-import {X} from 'lucide-react'
+import {Link,useLocation} from 'react-router-dom'
+import {Smile} from 'lucide-react'
 import './playing.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { useNavigate } from 'react-router-dom'
-
-// import { Check } from 'lucide-react'
-const Playing = () => {
+const Nextteam = () => {
+    const location = useLocation();
+    const { kk } = location.state;
+    console.log(kk,"dddd");
     let [score, setScore] = useState(0);
     let [over, setOver] = useState(0);
-    var [run, setRun] = useState(0);
+    let [runs, setRuns] = useState(0);
     let [wicket, setWicket] = useState(0)
     let [ball, setBall] = useState(0)
     let [counter,setCounter]=useState(0)
     // let [check,setCheck]=useState(false)
     let [gameOver,setGameOver]=useState(false)
-    let navigate = useNavigate()
-   
+
+ 
+    // if(wicket==newdata.player || over==newdata.over){
+    //     setGameOver(true)
+
+    // }
     let reduce = (state, action) => {
   
-          let newdar=localStorage.getItem("data ")
+          let newdar=localStorage.getItem("team2")
             let newdata=JSON.parse(newdar)
         let CheckOver=newdata.over;
         let ovrCom=newdata.player;
@@ -28,7 +33,7 @@ const Playing = () => {
         if (action.type === "OVER") {
           
      
-            if (ball === 6 && CheckOver>over && ovrCom>wicket) {
+            if (ball === 6 && CheckOver>over && ovrCom>wicket && kk!=runs) {
                setCounter(0);
                 setOver(over + 1)
                 setScore(0)
@@ -37,7 +42,7 @@ const Playing = () => {
         }
 
         else if (action.type === "wickets") {
-            if (ball < 6  && CheckOver>over && ovrCom>wicket) {
+            if (ball < 6  && CheckOver>over && ovrCom>wicket && kk!=runs) {
                 setCounter(counter+1)
                 setWicket(wicket + 1)
                 setBall(ball + 1)
@@ -45,54 +50,54 @@ const Playing = () => {
             }
         }
         else if (action.type === "one" ) {
-            if (ball < 6  && CheckOver>over && ovrCom>wicket) {
+            if (ball < 6  && CheckOver>over && ovrCom>wicket && kk!=runs) {
                 setScore(score + 1)
-                setRun(run + 1)
+                setRuns(runs + 1)
                 setCounter(counter+1)
                 setBall(ball + 1)
             }
         }
         else if (action.type === "two") {
-            if (ball < 6  && CheckOver>over && ovrCom>wicket) {
+            if (ball < 6  && CheckOver>over && ovrCom>wicket && kk!=runs) {
                 setScore(score + 2)
                 setCounter(counter+1)
-                setRun(run + 2)
+                setRuns(runs + 2)
                 setBall(ball + 1)
             }
         }
         else if (action.type === "three") {
-            if (ball < 6  && CheckOver>over && ovrCom>wicket) {
+            if (ball < 6  && CheckOver>over && ovrCom>wicket && kk!=runs) {
                 setScore(score + 3)
                 setCounter(counter+1)
-                setRun(run + 3)
+                setRuns(runs + 3)
                 setBall(ball + 1)
             }
         }
         else if (action.type === "four") {
-            if (ball < 6  && CheckOver>over && ovrCom>wicket) {
+            if (ball < 6  && CheckOver>over && ovrCom>wicket && kk!=runs) {
                 setScore(score + 4)
-                setRun(run + 4)
+                setRuns(runs + 4)
                 setCounter(counter+1)
                 setBall(ball + 1)
             }
 
         } else if (action.type === "six") {
-            if (ball < 6  && CheckOver>over && ovrCom>wicket) {
+            if (ball < 6  && CheckOver>over && ovrCom>wicket && kk!=runs) {
                 setScore(score + 6)
                 setCounter(counter+1)
-                setRun(run + 6)
+                setRuns(runs + 6)
                 setBall(ball + 1)
             }
         }
         else if (action.type === "wide") {
-            if (ball < 6  && CheckOver>over && ovrCom>wicket) {
+            if (ball < 6  && CheckOver>over && ovrCom>wicket && kk!=runs) {
                 setScore(score + 1)
-                setRun(run + 1)
+                setRuns(runs + 1)
                 setBall(ball)
             }
         }
         else if(action.type==="zero"){
-            if(ball<6  && CheckOver>over && ovrCom>wicket){
+            if(ball<6  && CheckOver>over && ovrCom>wicket && kk!=runs){
             setBall(ball+1)
             setCounter(counter+1)
 
@@ -100,33 +105,41 @@ const Playing = () => {
     }
     let [, dispatch] = useReducer(reduce, 0)
     let [name, setName] = useState("");
+let [oldname,setOldname]=useState("")
+
 
     useLayoutEffect(() => {
-        let a = localStorage.getItem("data ");
+        let a = localStorage.getItem("team2");
         let newdata = JSON.parse(a)
         setName(newdata)
-        
+        let teams=localStorage.getItem("data ")
+        let team1=JSON.parse(teams) 
+        setOldname(team1)
 
     }, [])
-   var kk;
+  let names='';
     useEffect(()=>{
-        let newdar=localStorage.getItem("data ")
+        let newdar=localStorage.getItem("team2")
     let newdata=JSON.parse(newdar)
+    let teams=localStorage.getItem("data ")
+    let team1=JSON.parse(teams)
         if(wicket==newdata.player || over==newdata.over){
             setGameOver(true)
     
         }
-        kk=run;  
-        console.log(kk);
-
+        if(kk==runs){
+            names =name.Firstname;
+            console.log(names);
+        }
+        else{
+            names=team1.Firstname
+            console.log(names);
+        }
     })
-    function Vsiew() {
-        console.log(kk,"Adfsafdasmfk");
-        navigate("/opposeteam",{state:{kk}})
-      }
-   
-    return (
-        <div className='Maincard'>
+
+
+  return (
+    <div className='Maincard'>
 
             <div className="container cardinner">
                 <div className='head2'>
@@ -156,7 +169,7 @@ const Playing = () => {
                         </span>
                     </div>
                     <div className='part2'>
-                        <h1 id="heading" align="center">Live Scoring Team 1</h1>
+                        <h1 id="heading" align="center">Live Scoring Team 2</h1>
                         <div className='shows text-center'>
                             <p className='outside'>
                                 Score <p class="insideptag"> {score}</p>
@@ -169,28 +182,37 @@ const Playing = () => {
                                 Wicket <p class="insideptag"> {wicket}</p>
 
                             </p><p className='outside'>
-                                Total Run <p class="insideptag"> {run}</p>
+                                Total Run <p class="insideptag"> {runs}</p>
 
                             </p><p className='outside'>
                                 Total over <p class="insideptag">{over}.{counter} </p>
 
                             </p>
+                            <p className='outside'>
+                                Target <p class="insideptag">{kk} </p>
+
+                            </p>
+                            <p className='outside'>
+                              Need <p class="insideptag">{kk-runs}</p>
+
+                            </p>
                         </div>
 
 
-                      { gameOver? (  <div class="card gameover"  style={{position:"absolute"}}>
+                      { gameOver || kk==runs? ( 
+                         <div class="card gameover"  style={{position:"absolute"}}>
                         <div id="tops">
-                                <div id="blank"></div><div><X/></div>
+                                <div id="blank"></div><div><Smile  color="#3e9392"/></div>
                             </div>
                       <div id="title">
                         Game Over
                         </div>
                         <div id="title">
-                      
-                      {name.Firstname}
+                     congratulation {kk==runs?name.Firstname:oldname.Firstname} win match
                         </div>
-                        <button onClick={()=>Vsiew()}>
-                            Next Team
+                        
+                        <button>
+                            <Link to='/'>New Match</Link>
                         </button>
 
 
@@ -198,6 +220,7 @@ const Playing = () => {
                       
                       
                       </div>):(<></>)}
+                      
 
 
 
@@ -249,5 +272,5 @@ const Playing = () => {
         </div>
     )
 }
+export default Nextteam
 
-export default Playing
