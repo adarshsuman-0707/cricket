@@ -12,7 +12,7 @@ export default function SPLoader(){
     })
     return (<>
     
-    <div>
+    <div className='body'>
         {
             showing? (<><div className="shift_center"><svg xmlns="http://www.w3.org/2000/svg" height="200px" width="200px" viewBox="0 0 200 200" class="pencil">
             <defs>

@@ -72,7 +72,7 @@ function Newone( event){
     <p>Total player:</p><input className="input" type="number" onInput={getting1} placeholder=" Enter Total player" name="player" value={input1.player} required></input>
     <br>
     </br>
-    <div className="d-flex" id="bottombuton"><button className="buttons"> submit</button></div>1
+    <div className="d-flex" id="bottombuton"><button className="buttons"> submit</button></div>
 </form>
       </div></>)}
      
