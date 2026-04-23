@@ -29,7 +29,7 @@ function OverthrowModal({ baseRuns, onConfirm, onCancel }) {
       <div className="modal-card ot-modal" onClick={e => e.stopPropagation()}>
         <div className="ot-header">
           <span className="ot-icon">🔄</span>
-          <h3>Overthrow?</h3>
+          <h3>Extra Run?</h3>
           <p>Base: <strong>{baseRuns}</strong> runs. Add overthrow runs:</p>
         </div>
         <div className="ot-options">

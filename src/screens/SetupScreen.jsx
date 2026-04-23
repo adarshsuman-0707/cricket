@@ -24,17 +24,17 @@ export default function SetupScreen() {
     const errs = validate(team1);
     if (Object.keys(errs).length) { setErrors(errs); return; }
     setErrors({});
+    // Auto-fill team2 overs & players from team1 — user can only change name
+    setTeam2({ name: '', overs: team1.overs, players: team1.players });
     setStep(2);
   }
 
   function handleStep2(e) {
     e.preventDefault();
-    const errs = validate(team2);
-    if (Object.keys(errs).length) { setErrors(errs); return; }
+    if (!team2.name.trim()) { setErrors({ name: 'Team name required' }); return; }
     setErrors({});
-    // Save both teams, clear old match data
     localStorage.setItem('team1', JSON.stringify({ ...team1, overs: +team1.overs, players: +team1.players }));
-    localStorage.setItem('team2', JSON.stringify({ ...team2, overs: +team2.overs, players: +team2.players }));
+    localStorage.setItem('team2', JSON.stringify({ ...team2, overs: +team1.overs, players: +team1.players }));
     localStorage.removeItem('team1Score');
     localStorage.removeItem('team2Score');
     localStorage.removeItem('tossResult');
@@ -42,8 +42,6 @@ export default function SetupScreen() {
   }
 
   const isStep1 = step === 1;
-  const cur = isStep1 ? team1 : team2;
-  const setCur = isStep1 ? setTeam1 : setTeam2;
   const onSubmit = isStep1 ? handleStep1 : handleStep2;
 
   return (
@@ -71,36 +69,62 @@ export default function SetupScreen() {
         <div className="setup-card-header">
           <div className="team-badge">Team {step}</div>
           <h2>{isStep1 ? 'First Team' : 'Second Team'}</h2>
-          <p>Enter team details</p>
+          <p>{isStep1 ? 'Enter team details' : 'Enter team name'}</p>
         </div>
 
         <form onSubmit={onSubmit} className="setup-form">
+
+          {/* Team Name — editable for both steps */}
           <Field
-            label="Team Name" icon="🏏" placeholder="e.g. Mumbai Indians"
-            value={cur.name} maxLength={20} type="text"
-            onChange={v => setCur({ ...cur, name: v })}
+            label="Team Name" icon="🏏"
+            placeholder={isStep1 ? 'e.g. Mumbai Indians' : 'e.g. Chennai Super Kings'}
+            value={isStep1 ? team1.name : team2.name}
+            maxLength={20} type="text"
+            onChange={v => isStep1
+              ? setTeam1({ ...team1, name: v })
+              : setTeam2({ ...team2, name: v })
+            }
             error={errors.name}
           />
 
+          {/* Overs & Players — editable only in step 1, locked in step 2 */}
           <div className="form-row">
-            <Field
-              label="Total Overs" icon="🔢" placeholder="e.g. 20"
-              value={cur.overs} type="number" min="1" max="50"
-              onChange={v => setCur({ ...cur, overs: v })}
-              error={errors.overs} half
+            <LockedField
+              label="Total Overs" icon="🔢"
+              value={isStep1 ? team1.overs : team1.overs}
+              locked={!isStep1}
+              type="number" min="1" max="50"
+              onChange={v => setTeam1({ ...team1, overs: v })}
+              error={isStep1 ? errors.overs : null}
             />
-            <Field
-              label="Players" icon="👥" placeholder="e.g. 11"
-              value={cur.players} type="number" min="2" max="11"
-              onChange={v => setCur({ ...cur, players: v })}
-              error={errors.players} half
+            <LockedField
+              label="Players" icon="👥"
+              value={isStep1 ? team1.players : team1.players}
+              locked={!isStep1}
+              type="number" min="2" max="11"
+              onChange={v => setTeam1({ ...team1, players: v })}
+              error={isStep1 ? errors.players : null}
             />
           </div>
 
+          {/* Step 2: info banner */}
+          {!isStep1 && (
+            <div className="locked-info-banner">
+              <span className="lib-icon">🔒</span>
+              <div>
+                <div className="lib-title">Same match conditions</div>
+                <div className="lib-sub">
+                  {team1.overs} overs · {team1.players} players per side
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Step 2: team1 summary */}
           {!isStep1 && (
             <div className="summary-chip">
               <span>🏏</span>
-              <span>{team1.name} · {team1.overs} overs · {team1.players} players</span>
+              <span>{team1.name} (Team 1) is set</span>
             </div>
           )}
 
@@ -109,7 +133,8 @@ export default function SetupScreen() {
           </button>
 
           {!isStep1 && (
-            <button type="button" className="btn-ghost" onClick={() => { setStep(1); setErrors({}); }}>
+            <button type="button" className="btn-ghost"
+              onClick={() => { setStep(1); setErrors({}); }}>
               ← Back
             </button>
           )}
@@ -142,6 +167,26 @@ function Field({ label, icon, placeholder, value, type, min, max, maxLength, onC
           type={type} placeholder={placeholder} value={value}
           min={min} max={max} maxLength={maxLength}
           onChange={e => onChange(e.target.value)}
+        />
+      </div>
+      {error && <span className="err">{error}</span>}
+    </div>
+  );
+}
+
+/* Locked field — shows value but disabled when locked=true */
+function LockedField({ label, icon, value, locked, type, min, max, onChange, error }) {
+  return (
+    <div className="form-group half">
+      <label>{label}</label>
+      <div className={`input-wrap ${locked ? 'locked' : ''}`}>
+        <span className="input-icon">{locked ? '🔒' : icon}</span>
+        <input
+          type={type} value={value}
+          min={min} max={max}
+          onChange={e => onChange(e.target.value)}
+          disabled={locked}
+          placeholder={locked ? '' : `e.g. ${type === 'number' ? (label.includes('Over') ? '20' : '11') : ''}`}
         />
       </div>
       {error && <span className="err">{error}</span>}
