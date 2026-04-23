@@ -30,7 +30,7 @@ function OverthrowModal({ baseRuns, onConfirm, onCancel }) {
         <div className="ot-header">
           <span className="ot-icon">🔄</span>
           <h3>Extra Run?</h3>
-          <p>Base: <strong>{baseRuns}</strong> runs. Add overthrow runs:</p>
+          <p>Base: <strong>{baseRuns}</strong> runs. Add Extra or Any Penalty runs:</p>
         </div>
         <div className="ot-options">
           {options.map(n => (
