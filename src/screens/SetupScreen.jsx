@@ -38,7 +38,7 @@ export default function SetupScreen() {
     localStorage.removeItem('team1Score');
     localStorage.removeItem('team2Score');
     localStorage.removeItem('tossResult');
-    navigate('/toss');
+    navigate('/players');
   }
 
   const isStep1 = step === 1;
@@ -61,7 +61,9 @@ export default function SetupScreen() {
         <div className={`step-line ${step >= 2 ? 'active' : ''}`} />
         <StepDot n={2} active={step >= 2} label="Team 2" />
         <div className="step-line" />
-        <StepDot n={3} active={false} label="Toss" />
+        <StepDot n={3} active={false} label="Players" />
+        <div className="step-line" />
+        <StepDot n={4} active={false} label="Toss" />
       </div>
 
       {/* Card */}

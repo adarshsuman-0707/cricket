@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import SplashScreen from './screens/SplashScreen';
 import SetupScreen from './screens/SetupScreen';
+import PlayerSetupScreen from './screens/PlayerSetupScreen';
 import TossScreen from './screens/TossScreen';
 import PlayingScreen from './screens/PlayingScreen';
 import Team2Screen from './screens/Team2Screen';
@@ -20,6 +21,7 @@ export default function AppRouter() {
   return (
     <Routes>
       <Route path="/" element={<SetupScreen />} />
+      <Route path="/players" element={<PlayerSetupScreen />} />
       <Route path="/toss" element={<TossScreen />} />
       <Route path="/playing" element={<PlayingScreen />} />
       <Route path="/team2" element={<Team2Screen />} />
