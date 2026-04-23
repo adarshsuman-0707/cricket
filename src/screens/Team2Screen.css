@@ -1,0 +1,268 @@
+/* ── Target Strip ── */
+.target-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 10px 16px 0;
+  background: linear-gradient(135deg, rgba(249,168,37,0.12), rgba(52,168,83,0.12));
+  border: 1px solid rgba(249,168,37,0.25);
+  border-radius: 16px;
+  padding: 12px 8px;
+}
+
+.ts-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.ts-val {
+  font-size: 20px;
+  font-weight: 800;
+  color: #fff;
+}
+
+.ts-val.yellow { color: #ffd600; }
+.ts-val.green  { color: #34a853; }
+.ts-val.req-rr { color: #ff6b6b; font-size: 18px; }
+
+.ts-label {
+  font-size: 10px;
+  color: #a0aec0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.ts-divider {
+  width: 1px;
+  height: 32px;
+  background: rgba(255,255,255,0.1);
+}
+
+/* ── Top bar additions ── */
+.top-bar-center {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.live-text {
+  font-size: 13px;
+  font-weight: 700;
+  color: #ff4444;
+  letter-spacing: 2px;
+}
+
+.innings-badge {
+  font-size: 11px;
+  font-weight: 600;
+  color: #a0aec0;
+  background: rgba(255,255,255,0.07);
+  padding: 3px 8px;
+  border-radius: 10px;
+}
+
+/* ── Scoring header with undo ── */
+.scoring-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.undo-btn {
+  font-size: 13px;
+  font-weight: 600;
+  color: #a0aec0;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid #2d3f55;
+  border-radius: 20px;
+  padding: 5px 14px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.2s;
+}
+
+.undo-btn:hover  { background: rgba(255,255,255,0.1); }
+.undo-btn:active { transform: scale(0.95); }
+.undo-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+
+/* ── Extra buttons row ── */
+.extra-btns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+/* ── Overthrow / Undo modals ── */
+.ot-modal, .undo-modal {
+  border-radius: 24px !important;
+  max-width: 340px !important;
+  margin: auto !important;
+  align-self: center !important;
+  padding: 28px 24px 32px !important;
+}
+
+.ot-header {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.ot-icon { font-size: 36px; display: block; margin-bottom: 8px; }
+
+.ot-header h3 {
+  font-size: 20px;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 6px;
+}
+
+.ot-header p {
+  font-size: 14px;
+  color: #a0aec0;
+}
+
+.ot-options {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.ot-btn {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: #243044;
+  border: 2px solid #2d3f55;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.2s;
+}
+
+.ot-btn.selected {
+  background: rgba(249,168,37,0.2);
+  border-color: #f9a825;
+  color: #ffd600;
+  box-shadow: 0 0 16px rgba(249,168,37,0.3);
+}
+
+.ot-btn:active { transform: scale(0.92); }
+
+.ot-total {
+  text-align: center;
+  font-size: 16px;
+  color: #a0aec0;
+  margin-bottom: 20px;
+}
+
+.ot-total strong { color: #fff; font-size: 22px; }
+
+.ot-actions {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+
+.ot-cancel {
+  flex: 1;
+  padding: 13px !important;
+  font-size: 14px !important;
+}
+
+.ot-confirm {
+  flex: 1;
+  padding: 13px !important;
+  font-size: 14px !important;
+  margin-top: 0 !important;
+}
+
+/* ── Result mini card in modal ── */
+.result-mini-card {
+  width: 100%;
+  background: rgba(0,0,0,0.25);
+  border-radius: 14px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 8px 0;
+}
+
+.rmc-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.rmc-team {
+  flex: 1;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.rmc-score {
+  font-size: 16px;
+  font-weight: 800;
+  color: #fff;
+}
+
+.rmc-overs {
+  font-size: 12px;
+  color: #a0aec0;
+}
+
+.winner-line {
+  font-size: 15px;
+  font-weight: 700;
+  color: #34a853;
+  text-align: center;
+  background: rgba(52,168,83,0.1);
+  border: 1px solid rgba(52,168,83,0.25);
+  border-radius: 12px;
+  padding: 10px 16px;
+  width: 100%;
+}
+
+/* ── Toss strip ── */
+.toss-strip {
+  margin: 8px 16px 0;
+  background: rgba(255,214,0,0.07);
+  border: 1px solid rgba(255,214,0,0.15);
+  border-radius: 10px;
+  padding: 7px 14px;
+  font-size: 12px;
+  color: #a0aec0;
+  text-align: center;
+}
+
+/* ── Innings over modal ── */
+.innings-over {
+  gap: 10px !important;
+}
+
+/* ── Buttons (shared, defined here for Team2 too) ── */
+.btn-primary {
+  width: 100%; padding: 15px;
+  background: linear-gradient(135deg, #1a73e8, #1557b0);
+  color: #fff; border: none; border-radius: 14px;
+  font-size: 16px; font-weight: 700;
+  cursor: pointer; transition: all 0.2s;
+  box-shadow: 0 4px 20px rgba(26,115,232,0.35);
+  font-family: inherit;
+}
+.btn-primary:active { transform: scale(0.97); }
+
+.btn-ghost {
+  width: 100%; padding: 13px;
+  background: transparent; color: #a0aec0;
+  border: 1.5px solid #2d3f55; border-radius: 14px;
+  font-size: 15px; font-weight: 600;
+  cursor: pointer; font-family: inherit;
+}
+.btn-ghost:active { background: rgba(255,255,255,0.05); }

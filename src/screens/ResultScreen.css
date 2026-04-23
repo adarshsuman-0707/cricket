@@ -1,0 +1,288 @@
+.result-screen {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #0d1f2d 0%, #0f1923 100%);
+  display: flex;
+  flex-direction: column;
+  max-width: 480px;
+  margin: 0 auto;
+  padding-bottom: 40px;
+}
+
+/* ── Trophy Section ── */
+.trophy-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 16px 28px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s cubic-bezier(0.34,1.56,0.64,1);
+}
+
+.trophy-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.confetti-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.confetti-item {
+  font-size: 24px;
+  animation: confettiBounce 0.6s ease both;
+}
+
+@keyframes confettiBounce {
+  0%   { transform: translateY(-20px); opacity: 0; }
+  60%  { transform: translateY(4px); }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+.trophy-icon {
+  font-size: 80px;
+  animation: trophyPop 0.6s cubic-bezier(0.34,1.56,0.64,1) 0.2s both;
+  filter: drop-shadow(0 8px 24px rgba(255,214,0,0.5));
+}
+
+@keyframes trophyPop {
+  from { transform: scale(0) rotate(-10deg); opacity: 0; }
+  to   { transform: scale(1) rotate(0deg);   opacity: 1; }
+}
+
+.winner-name {
+  font-size: 30px;
+  font-weight: 800;
+  color: #fff;
+  text-align: center;
+  margin-top: 12px;
+  text-shadow: 0 2px 20px rgba(255,214,0,0.3);
+}
+
+.winner-desc {
+  font-size: 16px;
+  color: #34a853;
+  font-weight: 600;
+  margin-top: 6px;
+  background: rgba(52,168,83,0.1);
+  border: 1px solid rgba(52,168,83,0.25);
+  padding: 6px 18px;
+  border-radius: 20px;
+}
+
+/* ── Scorecard ── */
+.scorecard {
+  margin: 0 16px;
+  background: #1e2d3d;
+  border-radius: 20px;
+  border: 1px solid #2d3f55;
+  overflow: hidden;
+}
+
+.sc-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  border-bottom: 1px solid #2d3f55;
+}
+
+.sc-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.5px;
+}
+
+.sc-toss {
+  font-size: 11px;
+  color: #a0aec0;
+  background: rgba(255,214,0,0.08);
+  border: 1px solid rgba(255,214,0,0.15);
+  padding: 3px 10px;
+  border-radius: 10px;
+}
+
+/* ── Innings Card ── */
+.innings-card {
+  padding: 16px;
+}
+
+.innings-card.first  { border-bottom: 1px solid #2d3f55; }
+
+.ic-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.ic-team {
+  font-size: 17px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.ic-target {
+  font-size: 12px;
+  color: #ffd600;
+  margin-top: 2px;
+}
+
+.ic-score-big {
+  font-size: 28px;
+  font-weight: 800;
+  color: #fff;
+}
+
+.ic-overs {
+  font-size: 12px;
+  color: #a0aec0;
+  margin-bottom: 14px;
+}
+
+.ic-stats {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.stat-chip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 8px 10px;
+  border-radius: 12px;
+  min-width: 52px;
+  flex: 1;
+}
+
+.sc-icon { font-size: 16px; }
+.sc-val  { font-size: 16px; font-weight: 800; color: #fff; }
+.sc-lbl  { font-size: 9px; color: #a0aec0; text-transform: uppercase; letter-spacing: 0.3px; }
+
+.stat-chip.sc-green  { background: rgba(52,168,83,0.12);  border: 1px solid rgba(52,168,83,0.2);  }
+.stat-chip.sc-gold   { background: rgba(255,214,0,0.1);   border: 1px solid rgba(255,214,0,0.2);  }
+.stat-chip.sc-red    { background: rgba(234,67,53,0.12);  border: 1px solid rgba(234,67,53,0.2);  }
+.stat-chip.sc-purple { background: rgba(156,39,176,0.12); border: 1px solid rgba(156,39,176,0.2); }
+.stat-chip.sc-blue   { background: rgba(26,115,232,0.12); border: 1px solid rgba(26,115,232,0.2); }
+
+/* ── VS divider ── */
+.vs-row {
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  gap: 10px;
+}
+
+.vs-line {
+  flex: 1;
+  height: 1px;
+  background: #2d3f55;
+}
+
+.vs-text {
+  font-size: 11px;
+  font-weight: 800;
+  color: #4a5568;
+  letter-spacing: 2px;
+}
+
+/* ── Over Summary ── */
+.over-summary {
+  margin: 16px 16px 0;
+  background: #1e2d3d;
+  border-radius: 16px;
+  border: 1px solid #2d3f55;
+  overflow: hidden;
+}
+
+.os-label {
+  padding: 12px 16px 10px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #a0aec0;
+  border-bottom: 1px solid #2d3f55;
+  letter-spacing: 0.3px;
+}
+
+.os-overs {
+  padding: 8px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.os-over-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.os-ov-num {
+  font-size: 11px;
+  font-weight: 600;
+  color: #4a5568;
+  min-width: 36px;
+}
+
+.os-balls {
+  display: flex;
+  gap: 5px;
+  flex: 1;
+  flex-wrap: wrap;
+}
+
+.os-runs {
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  min-width: 24px;
+  text-align: right;
+}
+
+/* Ball chips (reused from PlayingScreen) */
+.ball-chip {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px; font-weight: 700;
+}
+.ball-chip.empty   { background: rgba(255,255,255,0.06); border: 1.5px dashed rgba(255,255,255,0.15); }
+.ball-chip.ball-dot    { background: #2d3f55; color: #a0aec0; }
+.ball-chip.ball-run    { background: rgba(26,115,232,0.25); color: #64b5f6; border: 1px solid rgba(26,115,232,0.3); }
+.ball-chip.ball-four   { background: rgba(52,168,83,0.25);  color: #81c784; border: 1px solid rgba(52,168,83,0.3); }
+.ball-chip.ball-six    { background: rgba(251,188,4,0.25);  color: #ffd54f; border: 1px solid rgba(251,188,4,0.3); }
+.ball-chip.ball-wicket { background: rgba(234,67,53,0.25);  color: #ef9a9a; border: 1px solid rgba(234,67,53,0.3); }
+.ball-chip.ball-extra  { background: rgba(156,39,176,0.25); color: #ce93d8; border: 1px solid rgba(156,39,176,0.3); }
+
+/* ── Actions ── */
+.result-actions {
+  margin: 20px 16px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.btn-primary {
+  width: 100%; padding: 15px;
+  background: linear-gradient(135deg, #1a73e8, #1557b0);
+  color: #fff; border: none; border-radius: 14px;
+  font-size: 16px; font-weight: 700;
+  cursor: pointer; transition: all 0.2s;
+  box-shadow: 0 4px 20px rgba(26,115,232,0.35);
+  font-family: inherit;
+}
+.btn-primary:active { transform: scale(0.97); }
+
+.btn-ghost {
+  width: 100%; padding: 13px;
+  background: transparent; color: #a0aec0;
+  border: 1.5px solid #2d3f55; border-radius: 14px;
+  font-size: 15px; font-weight: 600;
+  cursor: pointer; font-family: inherit;
+}
+.btn-ghost:active { background: rgba(255,255,255,0.05); }

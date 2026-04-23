@@ -1,0 +1,92 @@
+.splash {
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(160deg, #0f1923 0%, #1a2535 50%, #0d2137 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.splash-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.splash-ball {
+  width: 90px;
+  height: 90px;
+  background: radial-gradient(circle at 35% 35%, #ff6b6b, #c0392b 60%, #922b21);
+  border-radius: 50%;
+  position: relative;
+  box-shadow: 0 8px 32px rgba(192, 57, 43, 0.5), inset 0 -4px 8px rgba(0,0,0,0.3);
+  animation: bounceBall 1.2s ease-in-out infinite;
+}
+
+.ball-seam {
+  position: absolute;
+  border: 2px solid rgba(255,255,255,0.35);
+  border-radius: 50%;
+}
+
+.seam1 {
+  width: 40px;
+  height: 70px;
+  top: 10px;
+  left: 24px;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  transform: rotate(20deg);
+}
+
+.seam2 {
+  width: 40px;
+  height: 70px;
+  top: 10px;
+  left: 24px;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  transform: rotate(-20deg);
+}
+
+@keyframes bounceBall {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+.splash-title {
+  font-size: 38px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 20px rgba(26, 115, 232, 0.6);
+}
+
+.splash-sub {
+  font-size: 15px;
+  color: #a0aec0;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.splash-loader {
+  width: 160px;
+  height: 3px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 3px;
+  overflow: hidden;
+  margin-top: 8px;
+}
+
+.loader-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #1a73e8, #34a853);
+  border-radius: 3px;
+  animation: loadBar 2.5s ease-in-out forwards;
+}
+
+@keyframes loadBar {
+  from { width: 0%; }
+  to { width: 100%; }
+}
